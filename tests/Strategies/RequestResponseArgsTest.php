@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ilex\Slim\Tests\RouteStrategies\Strategies;
 
+use Ilex\Slim\RouteStrategies\Exception\RouteArgsResolverException;
 use Ilex\Slim\RouteStrategies\RouteArgsResolver;
 use Ilex\Slim\RouteStrategies\Strategies\RequestResponseArgs;
 use Ilex\Slim\Tests\RouteStrategies\Fake\Case1;
@@ -20,8 +21,13 @@ class RequestResponseArgsTest extends TestCase
 
     /**
      * @dataProvider provider
+     *
+     * @param callable $callable
+     * @param array $args
+     * @throws RouteArgsResolverException
+     * @throws \ReflectionException
      */
-    public function testInvoke($callable, $args)
+    public function testInvoke(callable $callable, array $args): void
     {
         $request = $this->createMock(ServerRequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
@@ -60,7 +66,6 @@ class RequestResponseArgsTest extends TestCase
                     'z' => 'z'
                 ],
             ],
-
         ];
     }
 }

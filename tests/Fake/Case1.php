@@ -18,6 +18,9 @@ final class Case1 implements RouteArgsResolverInterface
         return $value;
     }
 
+    /**
+     * @return callable[]
+     */
     public function getArgsResolver(): array
     {
         return [
