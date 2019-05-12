@@ -1,0 +1,41 @@
+{
+    "name": "ilexn/slim-route-strategies",
+    "description": "slim 4 route strategies",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "iLexN",
+            "email": "ilex.job@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ilex\\Slim\\RouteStrategies\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ilex\\Slim\\Tests\\RouteStrategies\\": "tests"
+        }
+    },
+    "require": {
+        "slim/slim": "4.x-dev"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.11.0",
+        "phpstan/phpstan-phpunit": "^0.11.0",
+        "phpstan/phpstan-strict-rules": "^0.11.0",
+        "phpunit/phpunit": "^8.0",
+        "symplify/easy-coding-standard": "^5.4"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "cs-check": "ecs check src tests",
+        "cs-fix": "ecs check src tests --fix",
+        "bug-check": "phpstan analyse -l max src tests"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
