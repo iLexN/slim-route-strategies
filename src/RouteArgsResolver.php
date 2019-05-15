@@ -37,9 +37,9 @@ final class RouteArgsResolver
      * @param string $value
      * @return mixed
      */
-    public function resolve(string$key, string $value)
+    public function resolve(string $key, string $value)
     {
-        return \call_user_func($this->resolvers[$key], $value);
+        return $this->resolvers[$key]($value);
     }
 
     public function has(string $key): bool

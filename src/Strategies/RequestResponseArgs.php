@@ -42,12 +42,21 @@ final class RequestResponseArgs implements InvocationStrategyInterface
         ResponseInterface $response,
         array $routeArguments
     ): ResponseInterface {
-        foreach ($routeArguments as $key => $value) {
-            if ($this->argsResolvers->has($key)) {
-                $routeArguments[$key] = $this->argsResolvers->resolve($key, $value);
-            }
-        }
+        $newRouteArguments = array_map([$this, 'resolve'], array_keys($routeArguments), $routeArguments);
 
-        return $callable($request, $response, ...array_values($routeArguments));
+        return $callable($request, $response, ...array_values($newRouteArguments));
+    }
+
+    /**
+     * @param string $key
+     * @param string $value
+     * @return mixed
+     */
+    private function resolve(string $key, string $value)
+    {
+        if ($this->argsResolvers->has($key)) {
+            return $this->argsResolvers->resolve($key, $value);
+        }
+        return $value;
     }
 }
