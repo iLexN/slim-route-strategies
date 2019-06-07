@@ -13,18 +13,16 @@ final class RouteArgsResolver
      */
     private $resolvers = [];
 
-    public function __construct()
-    {
-    }
-
     /**
-     * @param RouteArgsResolverInterface $handler
+     * @param RouteArgsResolverInterface $routeArgsResolver
+     *
      * @return RouteArgsResolver
+     *
      * @throws RouteArgsResolverException
      */
-    public function add(RouteArgsResolverInterface $handler): self
+    public function add(RouteArgsResolverInterface $routeArgsResolver): self
     {
-        $keys = $handler->getArgsResolver();
+        $keys = $routeArgsResolver->getArgsResolver();
         foreach ($keys as $key => $callable) {
             $this->isValid($key, $callable);
             $this->resolvers[$key] = $callable;
@@ -35,6 +33,7 @@ final class RouteArgsResolver
     /**
      * @param string $key
      * @param string $value
+     *
      * @return mixed
      */
     public function resolve(string $key, string $value)
@@ -50,12 +49,13 @@ final class RouteArgsResolver
     /**
      * @param string $key
      * @param mixed $callable
+     *
      * @throws RouteArgsResolverException
      */
     private function isValid(string $key, $callable): void
     {
         if (\array_key_exists($key, $this->resolvers)) {
-            throw RouteArgsResolverException::KeyAlreadyExist($key);
+            throw RouteArgsResolverException::keyAlreadyExist($key);
         }
 
         if (!\is_callable($callable)) {

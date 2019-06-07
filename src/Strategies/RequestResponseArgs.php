@@ -14,23 +14,23 @@ final class RequestResponseArgs implements InvocationStrategyInterface
     /**
      * @var RouteArgsResolver
      */
-    private $argsResolvers;
+    private $routeArgsResolver;
 
     /**
      * RequestResponseArgs constructor.
      *
-     * @param RouteArgsResolver $argsResolver
+     * @param RouteArgsResolver $routeArgsResolver
      */
-    public function __construct(RouteArgsResolver $argsResolver)
+    public function __construct(RouteArgsResolver $routeArgsResolver)
     {
-        $this->argsResolvers = $argsResolver;
+        $this->routeArgsResolver = $routeArgsResolver;
     }
 
     /**
      * Invoke a Route callable.
      *
      * @param callable $callable The callable to invoke using the strategy.
-     * @param ServerRequestInterface $request The request object.
+     * @param ServerRequestInterface $serverRequest The request object.
      * @param ResponseInterface $response The response object.
      * @param array $routeArguments The Route's placeholder arguments
      *
@@ -38,24 +38,29 @@ final class RequestResponseArgs implements InvocationStrategyInterface
      */
     public function __invoke(
         callable $callable,
-        ServerRequestInterface $request,
+        ServerRequestInterface $serverRequest,
         ResponseInterface $response,
         array $routeArguments
     ): ResponseInterface {
-        $newRouteArguments = array_map([$this, 'resolve'], array_keys($routeArguments), $routeArguments);
+        $newRouteArguments = \array_map(
+            [$this, 'resolve'],
+            array_keys($routeArguments),
+            $routeArguments
+        );
 
-        return $callable($request, $response, ...array_values($newRouteArguments));
+        return $callable($serverRequest, $response, ...array_values($newRouteArguments));
     }
 
     /**
      * @param string $key
      * @param string $value
+     *
      * @return mixed
      */
     private function resolve(string $key, string $value)
     {
-        if ($this->argsResolvers->has($key)) {
-            return $this->argsResolvers->resolve($key, $value);
+        if ($this->routeArgsResolver->has($key)) {
+            return $this->routeArgsResolver->resolve($key, $value);
         }
         return $value;
     }
