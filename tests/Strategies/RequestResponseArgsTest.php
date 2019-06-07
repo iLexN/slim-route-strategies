@@ -11,6 +11,7 @@ use Ilex\Slim\Tests\RouteStrategies\Fake\Case1;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use ReflectionException;
 
 class RequestResponseArgsTest extends TestCase
 {
@@ -25,7 +26,7 @@ class RequestResponseArgsTest extends TestCase
      * @param callable $callable
      * @param array $args
      * @throws RouteArgsResolverException
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function testInvoke(callable $callable, array $args): void
     {

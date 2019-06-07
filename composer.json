@@ -1,8 +1,11 @@
 {
     "name": "ilexn/slim-route-strategies",
-    "description": "Slim 4 route strategies for parameter upcasting",
-    "keywords": ["slim4","route"],
     "type": "library",
+    "description": "Slim 4 route strategies for parameter upcasting",
+    "keywords": [
+        "slim4",
+        "route"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -10,16 +13,6 @@
             "email": "ilex.job@gmail.com"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "Ilex\\Slim\\RouteStrategies\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Ilex\\Slim\\Tests\\RouteStrategies\\": "tests"
-        }
-    },
     "require": {
         "php": "^7.2",
         "slim/slim": "4.x-dev"
@@ -31,13 +24,23 @@
         "phpunit/phpunit": "^8.0",
         "symplify/easy-coding-standard": "^5.4"
     },
-    "scripts": {
-        "test": "phpunit",
-        "cs-check": "ecs check src tests",
-        "cs-fix": "ecs check src tests --fix",
-        "bug-check": "phpstan analyse -l max src tests"
-    },
     "config": {
         "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Ilex\\Slim\\RouteStrategies\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ilex\\Slim\\Tests\\RouteStrategies\\": "tests"
+        }
+    },
+    "scripts": {
+        "bug-check": "phpstan analyse -l max src tests",
+        "cs-check": "ecs check src tests",
+        "cs-fix": "ecs check src tests --fix",
+        "test": "phpunit"
     }
 }

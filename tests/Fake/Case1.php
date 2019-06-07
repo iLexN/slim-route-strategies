@@ -19,9 +19,9 @@ final class Case1 implements RouteArgsResolverInterface
     }
 
     /**
-     * @return callable[]
+     * @return callable[]|iterable
      */
-    public function getArgsResolver(): array
+    public function getArgsResolver(): iterable
     {
         return [
             'a' => [$this, 'get'],

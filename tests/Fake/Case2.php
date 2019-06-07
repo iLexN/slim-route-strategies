@@ -8,7 +8,7 @@ use Ilex\Slim\RouteStrategies\RouteArgsResolverInterface;
 
 final class Case2 implements RouteArgsResolverInterface
 {
-    public function getArgsResolver(): array
+    public function getArgsResolver(): iterable
     {
         return [
             'z' => 'a',

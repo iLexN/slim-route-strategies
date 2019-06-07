@@ -6,5 +6,8 @@ namespace Ilex\Slim\RouteStrategies;
 
 interface RouteArgsResolverInterface
 {
-    public function getArgsResolver(): array;
+    /**
+     * @return iterable
+     */
+    public function getArgsResolver(): iterable;
 }
