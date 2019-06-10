@@ -48,7 +48,7 @@ final class RequestResponseArgs implements InvocationStrategyInterface
             $routeArguments
         );
 
-        return $callable($serverRequest, $response, ...array_values($newRouteArguments));
+        return $callable($serverRequest, $response, ...$newRouteArguments);
     }
 
     /**

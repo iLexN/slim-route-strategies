@@ -67,6 +67,20 @@ class RequestResponseArgsTest extends TestCase
                     'z' => 'z'
                 ],
             ],
+            [
+                //add test for infection
+                static function ($request, $response, string $a, string $b, int $c) {
+                    self::assertEquals('x', $a);
+                    self::assertEquals('y', $b);
+                    self::assertEquals(1, $c);
+                    return $response;
+                },
+                [
+                    'a' => 'x',
+                    'b' => 'y',
+                    'c' => 'z'
+                ],
+            ],
         ];
     }
 }

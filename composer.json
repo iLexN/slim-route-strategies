@@ -18,6 +18,7 @@
         "slim/slim": "4.x-dev"
     },
     "require-dev": {
+        "infection/infection": "^0.13.1",
         "phpstan/phpstan": "^0.11.0",
         "phpstan/phpstan-phpunit": "^0.11.0",
         "phpstan/phpstan-strict-rules": "^0.11.0",
@@ -41,6 +42,7 @@
         "bug-check": "phpstan analyse -l max src tests",
         "cs-check": "ecs check src tests",
         "cs-fix": "ecs check src tests --fix",
-        "test": "phpunit"
+        "test": "phpunit",
+        "test-test": "vendor/bin/infection --threads=4"
     }
 }
