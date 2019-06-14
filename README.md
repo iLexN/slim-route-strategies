@@ -1,5 +1,8 @@
 # Slim4 Route Strategies
 
+[![Latest Stable Version](https://poser.pugx.org/ilexn/slim-route-strategies/v/stable)](https://packagist.org/packages/ilexn/slim-route-strategies)
+[![Total Downloads](https://poser.pugx.org/ilexn/slim-route-strategies/downloads)](https://packagist.org/packages/ilexn/slim-route-strategies)
+
 [![Coverage Status](https://coveralls.io/repos/github/iLexN/slim-route-strategies/badge.svg?branch=master)](https://coveralls.io/github/iLexN/slim-route-strategies?branch=master)
 [![Build Status](https://travis-ci.org/iLexN/slim-route-strategies.svg?branch=master)](https://travis-ci.org/iLexN/slim-route-strategies)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/slim-route-strategies/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iLexN/slim-route-strategies/?branch=master)
